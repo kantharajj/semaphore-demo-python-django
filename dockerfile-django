@@ -1,9 +1,9 @@
 FROM python:3.10-buster
-RUN apt install git -y
 WORKDIR /app
-RUN git clone https://github.com/varunlamp/semaphore-demo-python-django.git && cd /app/semaphore-demo-python-django
-RUN pip install -r /app/semaphore-demo-python-django/requirements.txt
-RUN python /app/semaphore-demo-python-django/manage.py migrate
-
-ENTRYPOINT python /app/semaphore-demo-python-django/manage.py runserver 0.0.0.0:8732
+RUN apt install -y git && \
+git clone https://github.com/varunlamp/semaphore-demo-python-django.git && \
+ mv /app/semaphore-demo-python-django/* /app && \
+ pip install -r requirements.txt && \
+ python manage.py migrate
+ENTRYPOINT python manage.py runserver 0.0.0.0:8732
 EXPOSE 8732:8732
