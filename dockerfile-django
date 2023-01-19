@@ -1,7 +1,7 @@
 FROM python:3.10-buster
 WORKDIR /app
 RUN apt install -y git && \
-git clone https://github.com/varunlamp/semaphore-demo-python-django.git && \
+git clone https://github.com/kantharajj/semaphore-demo-python-django.git && \
  mv /app/semaphore-demo-python-django/* /app && \
  pip install -r requirements.txt && \
  python manage.py migrate
